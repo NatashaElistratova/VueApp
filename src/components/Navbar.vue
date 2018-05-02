@@ -15,17 +15,15 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-
-        <b-nav-item-dropdown right>
+        <b-nav-item-dropdown class="button_blue mr-2" right>
           <template slot="button-content">
-              <em>Log In</em>
+              <em class="text-light">Log In</em>
           </template>
-          <b-dropdown-item href="#">Facebook</b-dropdown-item>
-          <b-dropdown-item href="#">Google</b-dropdown-item>
-          <b-dropdown-item href="#" to="/login">Log In</b-dropdown-item>
-
+          <b-dropdown-item>Facebook</b-dropdown-item>
+          <b-dropdown-item>Google</b-dropdown-item>
+          <b-dropdown-item  to="/login">Log In</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-button size="sm" class="my-2 my-sm-0" to="/sign-up">Sign Up</b-button>
+        <b-button size="sm" class="my-2 my-sm-0 mr-2" to="/sign-up">Sign Up</b-button>
         <b-button size="sm" class="my-2 my-sm-0" v-on:click="logout">Log Out</b-button>
 
       </b-navbar-nav>
@@ -58,11 +56,11 @@ export default {
           className: 'addPost',
           href: '/add-post'
         },
-        {
-          name: 'Blog',
-          className: 'blog',
-          href: '/blog'
-        },
+        // {
+        //   name: 'Blog',
+        //   className: 'blog',
+        //   href: '/blog'
+        // },
         {
           name: 'Event',
           className: 'event',
@@ -102,4 +100,11 @@ nav {
 .nav-item .nav-link.active {
   color: #ffa31a;
 }
+.button_blue {
+  background-color: #65aee2;
+  border-radius: 3px;
+}
+/* .text_dark {
+  color: #2c3e50;
+} */
 </style>

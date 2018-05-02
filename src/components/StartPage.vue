@@ -39,7 +39,7 @@ export default {
 <style lang="css">
 
 .modal-mask {
-  background-color: rgb(40, 47, 62);
+  /* background-color: rgb(40, 47, 62); */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -48,7 +48,8 @@ export default {
 .images {
   position: relative;
   flex-grow: 1;
-  height: 300px;
+  height: 35%;
+  max-height: 250px;
 }
 
 .btn-wrap {
@@ -105,5 +106,29 @@ export default {
   100% {
     transform: translateY(10px);
   }
+}
+@media (max-width: 1024px) {
+  .modal-mask{
+    flex-direction: column-reverse;
+    align-items: inherit;
+  }
+  .images {
+    flex-grow: 0;
+  }
+  .images img:nth-child(1) {
+    left: 35%;
+  }
+  .images img:nth-child(2) {
+    left: 25%;
+  }
+  .images img:nth-child(3) {
+    left: 50%;
+    top:30%;
+  }
+
+  .btn-wrap {
+    flex-grow: 0;
+  }
+
 }
 </style>

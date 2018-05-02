@@ -72,7 +72,7 @@ export default {
 
 <style lang="css" scoped>
 .login-form{
-  width: 350px;
+  width: 100%;
   padding: 15px;
   box-sizing: border-box;
 }

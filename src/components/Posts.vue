@@ -1,33 +1,35 @@
 <template>
-<b-container>
-  <b-input-group size="lg" class="mt-3 mb-3">
-    <b-form-input type="text" placeholder="Search posts" v-model="search"></b-form-input>
-  </b-input-group>
-  <b-card v-for="post in filteredPosts" :key="post.id" tag="article" style="max-width: 100%;" class="mb-2">
-    <b-card-body class="text-left">
-      <b-img left :src="post.data.imageUrl" alt="Post Image"></b-img>
-      <h2>{{ post.data.title | to-uppercase }}</h2>
-      <p class="card-text">
-        {{ post.data.body }}
-      </p>
-      <router-link class="card-link" v-bind:to="`/post/${post.id}`">Read more</router-link>
-    </b-card-body>
-    <b-card-footer>
-      <div>
-        <div class="post-item__likes" v-if="post.likes">
-          <icon name="heart" color="#e63f2e"></icon>
-          <span >{{ Object.values(post.likes).length }}</span>
+  <b-container>
+    <b-input-group size="lg" class="mt-3 mb-3">
+      <b-form-input type="text" placeholder="Search posts" v-model="search"></b-form-input>
+    </b-input-group>
+    <b-card v-for="post in filteredPosts" :key="post.id" tag="article" style="max-width: 100%;" class="mb-2">
+      <b-card-body class="text-left">
+        <b-img left :src="post.data.imageUrl" alt="Post Image"></b-img>
+        <div class="h-100 card-text-wrap">
+          <h2>{{ post.data.title | to-uppercase }}</h2>
+          <p class="card-text">
+            {{ post.data.body }}
+          </p>
+          <router-link class="card-link" v-bind:to="`/post/${post.id}`">Read more</router-link>
         </div>
-        <div class="post-item__comments" v-if="post.comments">
-          <icon name="comment" color="#2d77ff"></icon>
-          <span >{{ Object.values(post.comments).length }}</span>
+      </b-card-body>
+      <b-card-footer>
+        <div>
+          <div class="post-item__likes" v-if="post.likes">
+            <icon name="heart" color="#e63f2e"></icon>
+            <span >{{ Object.values(post.likes).length }}</span>
+          </div>
+          <div class="post-item__comments" v-if="post.comments">
+            <icon name="comment" color="#2d77ff"></icon>
+            <span >{{ Object.values(post.comments).length }}</span>
+          </div>
         </div>
-      </div>
-      <b-button type="button" variant="warning" v-if="isAuthor(post)" v-on:click="deletePost(post.id)">Delete Post</b-button>
-    </b-card-footer>
-  </b-card>
-  <b-button type="button" variant="primary" v-on:click="getPosts">Load more</b-button>
-</b-container>
+        <b-button type="button" variant="warning" v-if="isAuthor(post)" v-on:click="deletePost(post.id)">Delete Post</b-button>
+      </b-card-footer>
+    </b-card>
+    <b-button type="button" variant="primary" v-on:click="getPosts">Load more</b-button>
+  </b-container>
 </template>
 
 <script>
@@ -106,6 +108,10 @@ article img {
 }
 .card-body {
   overflow: hidden;
+}
+.card-text-wrap {
+  display: flex;
+  flex-direction: column;
 }
 .card-text {
   max-height: 135px;

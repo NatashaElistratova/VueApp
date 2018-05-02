@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import startPage from '../components/Start.vue';
+import startPage from '../components/StartPage.vue';
 import homePage from '../components/Home.vue';
 import postsPage from '../components/Posts.vue';
 import addPost from '../components/AddPost.vue';

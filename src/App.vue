@@ -57,19 +57,21 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
+  background-color: rgb(40, 47, 62);
+  display: flex;
   transition: opacity 0.3s ease;
 }
 
 .modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .modal-container {
   width: 400px;
-  margin: 0px auto;
+  max-width: 100%;
   padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
