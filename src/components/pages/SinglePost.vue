@@ -32,7 +32,7 @@
 <script>
 import axios from 'axios';
 import firebase from 'firebase';
-import Comments from './Comments.vue';
+import Comments from '../comments/CommentList.vue';
 
 export default {
   components: {

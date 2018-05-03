@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import fbimg from '../assets/logo.png';
-import vueimg from '../assets/firebase.png';
-import btimg from '../assets/bootstrap.png';
+import fbimg from '../../assets/logo.png';
+import vueimg from '../../assets/firebase.png';
+import btimg from '../../assets/bootstrap.png';
 
 export default {
   data() {

@@ -24,15 +24,7 @@
     </div>
     <h3 class="text-left mb-3">Comments</h3>
     <b-card v-for="comment in comments" :key="comment.id" style="max-width: 100%;" class="post_comment mb-2">
-      <div class="cross"
-            v-on:click="deleteComment(comment.id)">x</div>
-      <b-card-body class="text-left">{{ comment.body }}</b-card-body>
-      <b-card-footer>
-        <div class="comment__footer">
-          <p>Author: {{ comment.author }}</p>
-          <p>{{ comment.date }}</p>
-        </div>
-      </b-card-footer>
+      <comment :comment="comment"></comment>
     </b-card>
   </b-container>
 </template>
@@ -40,10 +32,14 @@
 <script>
 import axios from 'axios';
 import firebase from 'firebase';
-import curDate from '../mixins/curDate';
-import sortByDate from '../mixins/sortByDate';
+import Comment from './Comment.vue';
+import curDate from '../../mixins/curDate';
+import sortByDate from '../../mixins/sortByDate';
 
 export default {
+  components: {
+    comment: Comment
+  },
   data() {
     return {
       commentText: '',
@@ -150,26 +146,8 @@ h3 {
 .border_blue {
   box-shadow: 0 0 5px 1px #2d77ff;
 }
-.comment__footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
 .text_under {
   font-size: 12px;
   font-style: italic;
-}
-.post_comment {
-  position: relative;
-}
-.post_comment .cross {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 2px 5px;
-  color: #fff;
-  background-color: #2d77ff;
-  border-radius: 3px;
-  cursor: pointer;
 }
 </style>

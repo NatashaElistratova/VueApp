@@ -31,7 +31,7 @@ export default {
 <style scoped>
 .home {
   min-height: 100vh;
-  background: url(../assets/background.jpg) center no-repeat;
+  background: url(../../assets/background.jpg) center no-repeat;
   background-size: cover;
 }
 </style>

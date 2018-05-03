@@ -1,16 +1,16 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import startPage from '../components/StartPage.vue';
-import homePage from '../components/Home.vue';
-import postsPage from '../components/Posts.vue';
-import addPost from '../components/AddPost.vue';
-import singlePost from '../components/SinglePost.vue';
-import eventsPage from '../components/Events.vue';
-import blogPage from '../components/Blog.vue';
+import startPage from '../components/pages/StartPage.vue';
+import homePage from '../components/pages/Home.vue';
+import posts from '../components/posts/PostList.vue';
+import addPost from '../components/pages/AddPost.vue';
+import singlePost from '../components/pages/SinglePost.vue';
+import eventsPage from '../components/pages/Events.vue';
+import blogPage from '../components/pages/Blog.vue';
 import login from '../components/LogInForm.vue';
 import signup from '../components/SignUpForm.vue';
-import notFoundComponent from '../components/NotFoundComponent.vue';
+import notFoundPage from '../components/pages/NotFoundPage.vue';
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -42,7 +42,7 @@ let router = new Router({
     {
       path: '/posts',
       name: '',
-      component: postsPage
+      component: posts
     },
     {
       path: '/add-post',
@@ -69,7 +69,7 @@ let router = new Router({
     },
     {
       path: '*',
-      component: notFoundComponent
+      component: notFoundPage
     }
   ]
 });

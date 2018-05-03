@@ -57,7 +57,7 @@ export default {
           .createUserWithEmailAndPassword(this.useremail, this.password)
           .then(user => {
             let curUserId = user.uid;
-            alert('Your account has been created');
+            // alert('Your account has been created');
             this.hideModalWin();
             return firebase
               .database()
@@ -75,7 +75,7 @@ export default {
     },
     hideModalWin() {
       this.showModal = false;
-      this.$router.replace('/');
+      this.$router.replace('/home');
     }
   }
 };

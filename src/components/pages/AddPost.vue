@@ -63,7 +63,7 @@
 <script>
 // import axios from 'axios';
 import firebase from 'firebase';
-import curDateMixin from '../mixins/curDate';
+import curDateMixin from '../../mixins/curDate';
 
 export default {
   data() {

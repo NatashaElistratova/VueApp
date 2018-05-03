@@ -56,7 +56,7 @@ export default {
         .signInWithEmailAndPassword(this.useremail, this.password)
         .then(user => {
           this.showModalWin();
-          alert('Well done! You are now connected');
+          // alert('Well done! You are now connected');
         })
         .catch(error => {
           this.errors.push(error.message);

@@ -23,7 +23,9 @@
           <b-dropdown-item>Google</b-dropdown-item>
           <b-dropdown-item  to="/login">Log In</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-button size="sm" class="my-2 my-sm-0 mr-2" to="/sign-up">Sign Up</b-button>
+        <b-button size="sm" class="my-2 my-sm-0 mr-2">
+          <router-link to="/sign-up" class="text_light">Sign Up</router-link>
+        </b-button>
         <b-button size="sm" class="my-2 my-sm-0" v-on:click="logout">Log Out</b-button>
 
       </b-navbar-nav>
@@ -104,7 +106,8 @@ nav {
   background-color: #65aee2;
   border-radius: 3px;
 }
-/* .text_dark {
-  color: #2c3e50;
-} */
+.text_light {
+  color: #fff;
+  text-decoration: none;
+}
 </style>
