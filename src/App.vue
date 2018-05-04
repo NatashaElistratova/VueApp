@@ -92,6 +92,17 @@ body {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+.list-item {
+  transition: all 1s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-leave-active {
+  position: absolute;
+}
 .link_dark {
   color: #007bff;
 }

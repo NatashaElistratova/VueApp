@@ -1,7 +1,9 @@
 <template>
   <div>
     <b-card-body class="text-left">
-      <b-img :src="post.data.imageUrl" alt="Post Image"></b-img>
+      <div class="img-wrap">
+        <img :src="post.data.imageUrl" alt="Post Image">
+      </div>
       <div class="card-text-wrap">
         <h2>{{ post.data.title | to-uppercase }}</h2>
         <p class="card-text">
@@ -61,14 +63,17 @@ article h2 {
   font-size: 1.2em;
   font-weight: 600;
 }
-article img {
+.img-wrap {
   width: 300px;
   max-width: 30%;
   margin-right: 15px;
 }
+.img-wrap img {
+  width: 100%;
+}
 .card-body {
   display: flex;
-  height: 300px;
+  /* height: 300px; */
   overflow: hidden;
 }
 .card-text-wrap {

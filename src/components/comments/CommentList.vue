@@ -23,11 +23,13 @@
 
     </div>
     <h3 class="text-left mb-3">Comments</h3>
-    <b-card v-for="comment in comments" :key="comment.id" style="max-width: 100%;" class="post_comment mb-2">
-      <comment :comment="comment"
-                v-on:delete-comment="deleteComment"
-      ></comment>
-    </b-card>
+    <!-- <transition-group name="list" tag="div"> -->
+      <b-card v-for="comment in comments" :key="comment.id" style="max-width: 100%;" class="post_comment mb-2">
+        <comment :comment="comment"
+                  v-on:delete-comment="deleteComment">
+        </comment>
+      </b-card>
+    <!-- </transition-group> -->
   </b-container>
 </template>
 
