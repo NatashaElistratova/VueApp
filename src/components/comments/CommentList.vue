@@ -24,7 +24,9 @@
     </div>
     <h3 class="text-left mb-3">Comments</h3>
     <b-card v-for="comment in comments" :key="comment.id" style="max-width: 100%;" class="post_comment mb-2">
-      <comment :comment="comment"></comment>
+      <comment :comment="comment"
+                v-on:delete-comment="deleteComment"
+      ></comment>
     </b-card>
   </b-container>
 </template>
@@ -47,9 +49,8 @@ export default {
       comments: [],
       postId: '',
       userId: '',
-      username: '',
-      commentDate: '',
-      commentId: ''
+      author: null,
+      commentDate: ''
     };
   },
   methods: {
@@ -64,9 +65,8 @@ export default {
             return response.data;
           })
           .then(user => {
-            let author = user.username;
-            this.username = author;
-            return author;
+            this.author = user;
+            return this.author;
           });
       }
     },
@@ -78,38 +78,50 @@ export default {
           }/comments.json`
         )
         .then(response => {
-          if (response.data) {
-            return Object.values(response.data);
+          let data = response.data;
+          if (data) {
+            let commentArray = [];
+            for (let key in data) {
+              data[key].id = key;
+              commentArray.push(data[key]);
+            }
+            return commentArray;
           }
         })
-        .then(data => {
-          if (data) {
-            let sortedComments = data.sort(this.sortByDate);
+        .then(comments => {
+          if (comments) {
+            let sortedComments = comments.sort(this.sortByDate);
             this.comments = sortedComments;
             return sortedComments;
           }
         });
     },
     addComment() {
-      this.isUser();
       let date = this.createDate();
       let comments = this.comments;
-      let comment = {
-        body: this.commentText,
-        author: this.username,
-        date: date
-      };
-      comments.unshift(comment);
+      let curUser = this.isUser();
 
-      firebase
-        .database()
-        .ref(`posts/${this.postId}/comments`)
-        .push(comment);
-      this.commentText = '';
+      if (curUser) {
+        let comment = {
+          body: this.commentText,
+          author: this.author,
+          date: date
+        };
+        comments.unshift(comment);
+
+        firebase
+          .database()
+          .ref(`posts/${this.postId}/comments`)
+          .push(comment);
+        this.commentText = '';
+      }
     },
     isUser() {
-      if (!this.username) {
+      if (!this.author) {
         this.$router.replace('/login');
+        return false;
+      } else {
+        return true;
       }
     },
     deleteComment(id) {

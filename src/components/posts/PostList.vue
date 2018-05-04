@@ -1,19 +1,13 @@
 <template>
-  <b-container>
-    <b-input-group size="lg" class="mt-3 mb-3">
-      <b-form-input type="text" placeholder="Search posts" v-model="search"></b-form-input>
-    </b-input-group>
-    <b-card v-for="post in filteredPosts"
-            :key="post.id"
-            tag="article"
-            style="max-width: 100%;"
-            class="mb-2">
-      <post :post="post"
-            v-on:delete-post="deletePost"
-      ></post>
-    </b-card>
-    <b-button type="button" variant="primary" v-on:click="getPosts">Load more</b-button>
-  </b-container>
+<b-container>
+  <b-input-group size="lg" class="mt-3 mb-3">
+    <b-form-input type="text" placeholder="Search posts" v-model="search"></b-form-input>
+  </b-input-group>
+  <b-card v-for="post in filteredPosts" :key="post.id" tag="article" style="max-width: 100%;" class="mb-2">
+    <post :post="post" v-on:delete-post="deletePost"></post>
+  </b-card>
+  <b-button type="button" variant="primary" v-on:click="getPosts">Load more</b-button>
+</b-container>
 </template>
 
 <script>

@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="cross"
-          v-on:click="deleteComment(comment.id)">x</div>
+          v-if="isAuthor(comment)"
+          v-on:click="$emit('delete-comment', comment.id)">x</div>
     <b-card-body class="text-left">{{ comment.body }}</b-card-body>
     <b-card-footer>
       <div class="comment__footer">
-        <p>Author: {{ comment.author }}</p>
+        <p>Author: {{ comment.author.username }}</p>
         <p>{{ comment.date }}</p>
       </div>
     </b-card-footer>
@@ -13,11 +14,20 @@
 </template>
 
 <script>
+import isAuthor from '../../mixins/isAuthor';
+
 export default {
-  props: ['comment'],
+  props: {
+    comment: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {};
-  }
+  },
+  mixins: [isAuthor],
+  created() {}
 };
 </script>
 

@@ -6,8 +6,8 @@ export default {
       let curUser = firebase.auth().currentUser;
       if (curUser) {
         let curUserId = curUser.uid;
-        let postAuthorId = item.userId;
-        if (curUserId === postAuthorId) {
+        let authorId = item.userId || item.author.userId;
+        if (curUserId === authorId) {
           return true;
         } else {
           return false;
