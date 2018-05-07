@@ -19,8 +19,8 @@
           <template slot="button-content">
               <em class="text-light">Log In</em>
           </template>
-          <b-dropdown-item>Facebook</b-dropdown-item>
-          <b-dropdown-item>Google</b-dropdown-item>
+          <!-- <b-dropdown-item>Facebook</b-dropdown-item> -->
+          <b-dropdown-item v-on:click="loginWithGoogle">Google</b-dropdown-item>
           <b-dropdown-item  to="/login">Log In</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-button size="sm" class="my-2 my-sm-0 mr-2">
@@ -72,6 +72,28 @@ export default {
     };
   },
   methods: {
+    loginWithGoogle() {
+      let provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+          let user = result.user;
+
+          firebase
+            .database()
+            .ref('users')
+            .child(user.uid)
+            .update({
+              username: user.displayName,
+              userId: user.uid
+            });
+        })
+        .catch(error => {
+          console.log(error.message);
+        });
+    },
     logout() {
       firebase
         .auth()
