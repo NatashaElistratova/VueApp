@@ -87,9 +87,11 @@ export default {
   text-align: left;
   margin-bottom: 10px;
 }
+
 .signup-form input {
   margin-bottom: 15px;
 }
+
 .error-list {
   width: 100%;
   box-sizing: border-box;
@@ -99,10 +101,12 @@ export default {
   border-radius: 5px;
   margin-bottom: 15px;
 }
+
 .error-list b {
   color: #fff;
   font-weight: 500;
 }
+
 .error-list ul {
   margin-top: 10px;
 }

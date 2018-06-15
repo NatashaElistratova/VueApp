@@ -15,7 +15,7 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown class="button_blue mr-2" right>
+        <b-nav-item-dropdown v-if="isLogIn" class="button_blue mr-2" right>
           <template slot="button-content">
               <em class="text-light">Log In</em>
           </template>
@@ -36,12 +36,12 @@
 </template>
 
 <script>
-// import logInForm from './LogInForm.vue';
 import firebase from 'firebase';
 export default {
   components: {},
   data() {
     return {
+      isLogIn: true,
       links: [
         {
           name: 'Home',
